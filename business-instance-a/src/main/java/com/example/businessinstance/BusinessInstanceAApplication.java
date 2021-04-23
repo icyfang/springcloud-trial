@@ -8,15 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RestController
 public class BusinessInstanceAApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BusinessInstanceAApplication.class, args);
     }
 
-    @RequestMapping("/service/name")
-    String name() {
-        return "business-instance-a";
-    }
 }
