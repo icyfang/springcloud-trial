@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 /**
- * @author Shanghong Cai
+ * @author Hodur
  * @since 2021-04-23
  */
-@FeignClient(name = "business-instance"
+@FeignClient(name = "business-service"
         ,contextId = "compression"
 )
 public interface CompressionRemote {

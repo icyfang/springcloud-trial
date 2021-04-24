@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * @author Shanghong Cai
+ * @author Hodur
  * @since 2021-04-02
  */
-@FeignClient(name="business-instance"
+@FeignClient(name="business-service"
         , contextId = "decoder"
         ,configuration = DecoderRemote.FeignPrototypeConfig.class
 )

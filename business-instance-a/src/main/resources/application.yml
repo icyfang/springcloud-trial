@@ -5,11 +5,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8080/eureka/,http://localhost:8081/eureka/
   instance:
-    appname: business-instance-a
+    appname: business-service-a
     hostname: localhost
-    virtual-host-name: business-instance
+    virtual-host-name: business-service
 server:
   port: 8085
 spring:
   application:
-    name: business-instance
+    name: business-service

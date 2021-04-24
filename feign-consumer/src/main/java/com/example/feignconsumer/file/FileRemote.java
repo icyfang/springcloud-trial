@@ -4,10 +4,10 @@ import com.example.feignconsumer.business.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
- * @author Shanghong Cai
+ * @author Hodur
  * @since 2021-04-23
  */
-@FeignClient(name = "business-instance"
+@FeignClient(name = "business-service"
         ,contextId = "file"
         ,configuration = FeignConfig.class
 )

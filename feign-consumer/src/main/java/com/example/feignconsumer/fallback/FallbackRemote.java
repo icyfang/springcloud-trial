@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * @author Shanghong Cai
+ * @author Hodur
  * @since 2021-03-17
  */
-@FeignClient(name = "business-instance"
+@FeignClient(name = "business-service"
         , contextId = "fallback"
         , fallback = FallbackRemote.FallbackFallback.class
 )

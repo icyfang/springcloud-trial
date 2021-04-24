@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @author Shanghong Cai
+ * @author Hodur
  * @since 2021-04-21
  */
 @Slf4j
@@ -27,7 +27,7 @@ public class ApiExceptionHandler {
     }
 
     /**
-     * @author Shanghong Cai
+     * @author Hodur
      * @since 2021-03-23
      */
     @Data

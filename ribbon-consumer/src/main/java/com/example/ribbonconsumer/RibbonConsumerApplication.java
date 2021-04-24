@@ -26,7 +26,7 @@ public class RibbonConsumerApplication {
         return new RestTemplate();
     }
 
-    String serviceName = "business-instance";
+    String serviceName = "business-service";
 
     @RequestMapping("/service/name")
     public String getName() {

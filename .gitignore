@@ -24,6 +24,3 @@ hs_err_pid*
 
 /.idea
 *.iml
-.idea/encodings.xml
-.idea/workspace.xml
-springcloud-trial.iml

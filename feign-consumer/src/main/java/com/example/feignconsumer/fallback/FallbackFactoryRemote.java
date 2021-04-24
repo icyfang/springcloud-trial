@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * @author Shanghong Cai
+ * @author Hodur
  * @since 2021-04-02
  */
-@FeignClient(name = "business-instance"
+@FeignClient(name = "business-service"
         , contextId = "factory"
         , fallbackFactory = FallbackFactoryRemote.HystrixClientFallbackFactory.class
 )
