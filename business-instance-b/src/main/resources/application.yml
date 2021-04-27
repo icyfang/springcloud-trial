@@ -3,11 +3,15 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8080/eureka/,http://localhost:8081/eureka/
+      defaultZone: http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8080/eureka/,http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8081/eureka/
   instance:
     appname: business-service-b
     hostname: localhost
     virtual-host-name: business-service
+  server:
+    security:
+      name: admin
+      password: 123456
 server:
   port: 8086
 spring:

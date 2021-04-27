@@ -55,47 +55,4 @@ public class EurekaServerApplication {
         }).collect(Collectors.toList());
     }
 
-
-}
-
-@ControllerAdvice("com.example.eurekaserver")
-class CustomeResponseBodyAdvice implements ResponseBodyAdvice<Object> {
-    @Override
-    public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return false;
-    }
-
-    @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        return ReturnType.of(body);
-    }
-}
-class ReturnType<T>{
-    String code;
-    T value;
-
-    public ReturnType(String code, T value) {
-        this.code = code;
-        this.value = value;
-    }
-
-    static <T> ReturnType<T> of(T t) {
-        return new ReturnType<T>("200", t);
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
-    }
 }

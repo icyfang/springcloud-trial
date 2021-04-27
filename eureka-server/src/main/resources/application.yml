@@ -3,9 +3,14 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8081/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8081/eureka/
   instance:
     appname: eureka-server
     hostname: localhost
 server:
   port: 8080
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
