@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,9 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Hodur
@@ -27,12 +30,25 @@ import java.util.List;
 @RestController
 public class BusinessController implements FileApi {
 
+    static List<String> s = Arrays.asList("Odin", "Frigg", "Thor", "Siv", "Freyr", "Loki", "Tyr",
+            "Freyja", "Heimdall", "Baldur", "Hoder", "Budle");
+
     @Value("${eureka.instance.appname}")
     private String instanceName;
 
     @GetMapping(value = "/business/instanceName")
     public String getInstanceName() {
         return instanceName;
+    }
+
+    @GetMapping(value = "/business/god/{id}")
+    public String getGod(@PathVariable Integer id) {
+        return s.get(id);
+    }
+
+    @GetMapping(value = "/business/godList/{idList}")
+    public List<String> listGod(@PathVariable List<Integer> idList) {
+        return idList.stream().map(i -> s.get(i)).collect(Collectors.toList());
     }
 
     @GetMapping(value = "/business/fallback")

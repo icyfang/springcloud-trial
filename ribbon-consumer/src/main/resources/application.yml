@@ -1,0 +1,38 @@
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8080/eureka/,http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8081/eureka/
+  instance:
+    appname: ribbon-consumer
+    hostname: localhost
+  server:
+    security:
+      name: admin
+      password: 123456
+server:
+  port: 8091
+spring:
+  application:
+    name: ribbon-consumer
+service-url:
+  http: http://
+  business-service: ${service-url.http}business-service
+ribbon:
+  #\u670D\u52A1\u8BF7\u6C42\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4\uFF08\u6BEB\u79D2\uFF09
+  ConnectTimeout: 1000
+  #\u670D\u52A1\u8BF7\u6C42\u5904\u7406\u8D85\u65F6\u65F6\u95F4\uFF08\u6BEB\u79D2\uFF09
+  ReadTimeout: 3000
+  #\u5BF9\u8D85\u65F6\u8BF7\u6C42\u542F\u7528\u91CD\u8BD5\u673A\u5236
+  OkToRetryOnAllOperations: true
+  http:
+    client:
+      enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
