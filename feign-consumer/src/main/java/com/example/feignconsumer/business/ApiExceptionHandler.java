@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author Hodur
- * @since 2021-04-21
+ * @date 2021-04-21
  */
 @Slf4j
 @ControllerAdvice
@@ -28,7 +28,7 @@ public class ApiExceptionHandler {
 
     /**
      * @author Hodur
-     * @since 2021-03-23
+     * @date 2021-03-23
      */
     @Data
     @AllArgsConstructor

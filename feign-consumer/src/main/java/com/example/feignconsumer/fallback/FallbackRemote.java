@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Hodur
- * @since 2021-03-17
+ * @date 2021-03-17
  */
 @FeignClient(name = "business-service"
         , contextId = "fallback"

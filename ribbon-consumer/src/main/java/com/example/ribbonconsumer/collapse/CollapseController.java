@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Hodur
- * @since 2021-04-25
+ * @date 2021-04-25
  */
 @RestController
 public class CollapseController {

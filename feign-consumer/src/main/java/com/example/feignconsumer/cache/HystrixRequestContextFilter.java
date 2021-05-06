@@ -2,7 +2,7 @@ package com.example.feignconsumer.cache;
 
 /**
  * @author Hodur
- * @since 2021-04-25
+ * @date 2021-04-25
  */
 
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;

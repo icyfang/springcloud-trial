@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author Hodur
- * @since 2021-04-23
+ * @date 2021-04-23
  */
 @FeignClient(name = "business-service"
         ,contextId = "file"

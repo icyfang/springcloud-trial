@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * @author Hodur
- * @since 2021-03-23
+ * @date 2021-03-23
  */
 @Data
 @AllArgsConstructor

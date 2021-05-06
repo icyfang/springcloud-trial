@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Hodur
- * @since 2021-04-02
+ * @date 2021-04-02
  */
 @FeignClient(name = "business-service"
         , contextId = "factory"

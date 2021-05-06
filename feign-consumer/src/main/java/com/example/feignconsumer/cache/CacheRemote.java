@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Hodur
- * @since 2021-04-25
+ * @date 2021-04-25
  */
 @FeignClient(name = "business-service"
         , contextId = "cache"
