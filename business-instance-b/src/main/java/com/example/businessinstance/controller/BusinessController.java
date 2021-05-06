@@ -76,8 +76,8 @@ public class BusinessController implements FileApi{
 
     @GetMapping(value = "/compression")
     List<String> get() {
-        List<String> s = new ArrayList<>(2024);
-        for (int i = 0; i < 1024; i++) {
+        List<String> s = new ArrayList<>(2048);
+        for (int i = 0; i < 2048; i++) {
             s.add("0");
         }
         return s;

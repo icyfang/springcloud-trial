@@ -69,7 +69,7 @@ public class BusinessController implements FileApi {
 
     @GetMapping(value = "/compression")
     List<String> get() {
-        List<String> s = new ArrayList<>(2024);
+        List<String> s = new ArrayList<>(2048);
         for (int i = 0; i < 1024; i++) {
             s.add("0");
         }

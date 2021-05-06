@@ -17,8 +17,8 @@ public class CompressionController {
 
     @PostMapping("/compression")
     public void post() {
-        List<String> s = new ArrayList<>(2024);
-        for (int i = 0; i < 1024; i++) {
+        List<String> s = new ArrayList<>(2048);
+        for (int i = 0; i < 2048; i++) {
             s.add("0");
         }
         remote.post(s);
