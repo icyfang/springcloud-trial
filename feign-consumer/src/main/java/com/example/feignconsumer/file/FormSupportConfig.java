@@ -1,23 +1,23 @@
 package com.example.feignconsumer.file;
 
-import com.example.feignconsumer.business.ApiException;
-import com.example.feignconsumer.business.ApiExceptionHandler;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import feign.Logger;
-import feign.Response;
 import feign.codec.Encoder;
-import feign.codec.ErrorDecoder;
 import feign.form.spring.SpringFormEncoder;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FormSupportConfig {
 
+    @Autowired
+    private ObjectFactory<HttpMessageConverters> messageConverters;
+
     @Bean
     public Encoder feignFormEncoder() {
-        return new SpringFormEncoder();
+        return new SpringFormEncoder(new SpringEncoder(messageConverters));
     }
 
 }
