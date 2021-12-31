@@ -16,10 +16,6 @@ server:
 spring:
   application:
     name: feign-consumer
-#  cloud:
-#    loadbalancer:
-#      ribbon:
-#        enabled: false
 logging:
   level:
     com.example.feignconsumer.business.*: debug
@@ -28,12 +24,14 @@ feign:
     enabled: true
   compression:
     request:
-      enabled: true #开请求压缩
-      mimeTypes: #媒体类型 text/xml,application/xml,application/json
-      minRequestSize: 1024 #最小的请求大小
+      #\u5F00\u8BF7\u6C42\u538B\u7F29
+      enabled: true
+      #\u5A92\u4F53\u7C7B\u578B
+      mimeTypes: text/xml,application/xml,application/json
+      #\u6700\u5C0F\u7684\u8BF7\u6C42\u5927\u5C0F
+      minRequestSize: 2048
     response:
-      enabled: true #开启响应的压缩
-      useGzipDecoder: true
+      enabled: true #\u5F00\u542F\u54CD\u5E94\u7684\u538B\u7F29
 hystrix:
   command:
     default:

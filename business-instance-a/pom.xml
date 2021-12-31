@@ -46,7 +46,6 @@
             <artifactId>springfox-bean-validators</artifactId>
             <version>${version.swagger}</version>
         </dependency>
-
     </dependencies>
 
     <build>

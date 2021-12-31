@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Hodur
- * @date 2021-04-25
+ * @date 2021/04/25
  */
 @FeignClient(name = "business-service"
         , contextId = "cache"
@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface CacheRemote {
 
     @GetMapping(value = "/business/instanceName")
-    public String cache();
+    String cache();
 
 }

@@ -2,15 +2,13 @@ package com.example.feignconsumer.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
 
 /**
  * @author Hodur
- * @date 2021-03-17
+ * @date 2021/03/17
  */
 @RestController
 public class BusinessController {

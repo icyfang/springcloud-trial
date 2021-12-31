@@ -7,27 +7,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Hodur
- * @date 2021-03-17
+ * @date 2021/03/17
  */
+@SuppressWarnings("SameReturnValue")
 @FeignClient(name = "business-service"
-        ,contextId = "business"
-        ,configuration = FeignConfig.class
-        ,fallback = BusinessRemote.BusinessFallback.class
+        , contextId = "business"
+        , configuration = FeignConfig.class
+        , fallback = BusinessRemote.BusinessFallback.class
 )
-public interface BusinessRemote  {
+public interface BusinessRemote {
 
     @GetMapping(value = "/business/instanceName")
-    public String instanceName();
+    String instanceName();
 
     // todo HystrixObservable
     @GetMapping(value = "/business/instanceName")
-    public HystrixCommand<String> asyncName();
+    HystrixCommand<String> asyncName();
 
     @GetMapping(value = "/business/exception")
     String exception();
 
     @Component
-    class BusinessFallback implements BusinessRemote{
+    class BusinessFallback implements BusinessRemote {
 
         @Override
         public String instanceName() {

@@ -12,12 +12,23 @@
     <artifactId>springcloud-trial</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springcloud-trial</name>
-    <description>Demo project for Spring Boot</description>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Cloud</description>
 
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
     </properties>
+
+    <modules>
+        <module>business-instance-a</module>
+        <module>business-instance-b</module>
+        <module>eureka-server</module>
+        <module>eureka-server-b</module>
+        <module>feign-consumer</module>
+        <module>ribbon-consumer</module>
+        <module>gateway</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -39,6 +50,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>

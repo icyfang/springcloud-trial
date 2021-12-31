@@ -4,16 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Logger;
 import feign.Response;
 import feign.Retryer;
-import feign.codec.Encoder;
 import feign.codec.ErrorDecoder;
-import feign.form.spring.SpringFormEncoder;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FeignConfig {
-
 
     @Bean
     public Logger.Level feignLoggerLevel() {
@@ -22,7 +19,7 @@ public class FeignConfig {
 
     @Bean
     public Retryer feignRetryer() {
-        return new Retryer.Default(1000,3000,3);
+        return new Retryer.Default(1000, 3000, 3);
     }
 
 //    @Bean
@@ -45,7 +42,7 @@ public class FeignConfig {
     public ErrorDecoder errorDecoder() {
         return new ErrorDecoder() {
 
-            org.slf4j.Logger log = LoggerFactory.getLogger(ErrorDecoder.class);
+            final org.slf4j.Logger log = LoggerFactory.getLogger(ErrorDecoder.class);
 
 //        @Override
 //        public Exception decode(String methodKey, Response response) {

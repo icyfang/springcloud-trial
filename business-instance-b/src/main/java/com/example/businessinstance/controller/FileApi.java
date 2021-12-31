@@ -26,8 +26,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Optional;
 
-@Api(value = "file", description = "the file API")
-//@RequestMapping(value = "/v2")
+@Api(value = "file", tags = "the file API")
 public interface FileApi {
 
     Logger log = LoggerFactory.getLogger(FileApi.class);
@@ -44,39 +43,42 @@ public interface FileApi {
         return getRequest().map(r -> r.getHeader("Accept"));
     }
 
-    @ApiOperation(value = "", nickname = "downloadFile", notes = "", response = Resource.class, tags={ "Download", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation", response = Resource.class) })
+    @ApiOperation(value = "", nickname = "downloadFile", notes = "", response = Resource.class, tags = {"Download",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful operation", response = Resource.class)})
     @RequestMapping(value = "/file/download",
-        produces = { "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }, 
-        method = RequestMethod.GET)
+            produces = {"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+            method = RequestMethod.GET)
     default ResponseEntity<Resource> downloadFile() {
-        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+        if (getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("", Resource.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get()
+                            .readValue("", Resource.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type ", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             }
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default FileApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default FileApi interface so no example is" +
+                    " generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-
-    @ApiOperation(value = "", nickname = "uploadFile", notes = "", tags={ "Download", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation") })
+    @ApiOperation(value = "", nickname = "uploadFile", notes = "", tags = {"Download",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful operation")})
     @RequestMapping(value = "/file/upload",
-        consumes = { "multipart/form-data" },
-        method = RequestMethod.POST)
-    default ResponseEntity<Void> uploadFile(@ApiParam(value = "") @Valid @RequestPart(value = "file", required = true) MultipartFile file) {
-        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            consumes = {"multipart/form-data"},
+            method = RequestMethod.POST)
+    default ResponseEntity<Void> uploadFile(@ApiParam(value = "") @Valid @RequestPart(value = "file",
+            required = true) MultipartFile file) {
+        if (getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
         } else {
-            log.warn("ObjectMapper or HttpServletRequest not configured in default FileApi interface so no example is generated");
+            log.warn("ObjectMapper or HttpServletRequest not configured in default FileApi interface so no example is" +
+                    " generated");
         }
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }

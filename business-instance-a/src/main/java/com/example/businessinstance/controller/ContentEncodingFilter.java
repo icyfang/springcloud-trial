@@ -1,6 +1,7 @@
 package com.example.businessinstance.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -19,15 +20,15 @@ import java.util.zip.GZIPInputStream;
 
 /**
  * @author Hodur
- * @date 2021-04-30
+ * @date 2021/04/30
  */
 @Component
 @Slf4j
 public class ContentEncodingFilter extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-                                    FilterChain chain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,@NonNull HttpServletResponse response,
+                                    @NonNull FilterChain chain) throws ServletException, IOException {
 
         String conentEncoding = request.getHeader("Content-Encoding");
         log.trace("Content-Encoding: {}", conentEncoding);
@@ -42,7 +43,7 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
     @Slf4j
     static class GzipRequestWrapper extends HttpServletRequestWrapper {
 
-        protected HttpServletRequest request;
+        protected final HttpServletRequest request;
 
         public GzipRequestWrapper(HttpServletRequest request) {
             super(request);
@@ -52,7 +53,7 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
         @Override
         public ServletInputStream getInputStream() throws IOException {
             ServletInputStream sis = request.getInputStream();
-            InputStream is = null;
+            InputStream is;
             String conentEncoding = request.getHeader("Content-Encoding");
             if ("gzip".equalsIgnoreCase(conentEncoding)) {
                 is = new GZIPInputStream(sis);
@@ -113,7 +114,7 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
                         }
 
                         @Override
-                        public void onAllDataRead() throws IOException {
+                        public void onAllDataRead() {
                             log.trace("onAllDataRead");
                         }
 

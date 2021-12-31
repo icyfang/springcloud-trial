@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Hodur
- * @date 2021-04-24
+ * @date 2021/04/24
  */
 @RestController
 public class HystrixController {

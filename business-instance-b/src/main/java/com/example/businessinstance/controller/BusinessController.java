@@ -1,9 +1,6 @@
 package com.example.businessinstance.controller;
 
 import com.netflix.hystrix.exception.HystrixBadRequestException;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -15,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
@@ -24,7 +19,6 @@ import org.springframework.web.util.UriUtils;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,12 +26,12 @@ import java.util.stream.Collectors;
 
 /**
  * @author Hodur
- * @date 2021-03-17
+ * @date 2021/03/17
  */
 @RestController
-public class BusinessController implements FileApi{
+public class BusinessController implements FileApi {
 
-    static List<String> s = Arrays.asList("Odin", "Frigg", "Thor", "Siv", "Freyr", "Loki", "Tyr",
+    final static List<String> GOD_LIST = Arrays.asList("Odin", "Frigg", "Thor", "Siv", "Freyr", "Loki", "Tyr",
             "Freyja", "Heimdall", "Baldur", "Hoder", "Budle");
 
     @Value("${eureka.instance.appname}")
@@ -50,12 +44,12 @@ public class BusinessController implements FileApi{
 
     @GetMapping(value = "/business/god/{id}")
     public String getGod(@PathVariable Integer id) {
-        return s.get(id);
+        return GOD_LIST.get(id);
     }
 
     @GetMapping(value = "/business/godList/{idList}")
     public List<String> listGod(@PathVariable List<Integer> idList) {
-        return idList.stream().map(i -> s.get(i)).collect(Collectors.toList());
+        return idList.stream().map(GOD_LIST::get).collect(Collectors.toList());
     }
 
     @GetMapping(value = "/business/fallback")
@@ -76,8 +70,9 @@ public class BusinessController implements FileApi{
 
     @GetMapping(value = "/compression")
     List<String> get() {
-        List<String> s = new ArrayList<>(2048);
-        for (int i = 0; i < 2048; i++) {
+        int capacity = 2048;
+        List<String> s = new ArrayList<>(capacity);
+        for (int i = 0; i < capacity; i++) {
             s.add("0");
         }
         return s;
@@ -92,11 +87,11 @@ public class BusinessController implements FileApi{
     public ResponseEntity<Resource> downloadFile() {
 
         HttpHeaders headers = new HttpHeaders();
-        File file = null;
+        File file;
         try {
             file = ResourceUtils.getFile("classpath:files/download.txt");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new ApiException(HttpStatus.NOT_FOUND, "File not found");
         }
         headers.set("Content-Disposition", "attachment; filename*=UTF-8''" + UriUtils.encode(file.getName(), "UTF-8"));
         return new ResponseEntity<>(new FileSystemResource(file), headers, HttpStatus.OK);

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author Hodurhongsh
- * @date 2021-04-25
+ * @author Hodur
+ * @date 2021/04/25
  */
 @RestController
 public class CacheController {

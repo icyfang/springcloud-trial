@@ -5,12 +5,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author Hodur
- * @date 2021-04-23
+ * @date 2021/04/23
  */
 @FeignClient(name = "business-service"
-        ,contextId = "file"
-        ,configuration = FeignConfig.class
+        , contextId = "file"
+        , configuration = FeignConfig.class
 )
-public interface FileRemote extends FileApi{
+public interface FileRemote extends FileApi {
 
 }

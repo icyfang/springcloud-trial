@@ -1,13 +1,12 @@
 package com.example.feignconsumer.fallback;
 
-import com.example.feignconsumer.business.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Hodur
- * @date 2021-03-17
+ * @date 2021/03/17
  */
 @FeignClient(name = "business-service"
         , contextId = "fallback"

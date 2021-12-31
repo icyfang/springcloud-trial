@@ -14,7 +14,7 @@ public class UploadController {
     @Autowired
     UploadService uploadService;
 
-    @RequestMapping(value = "/uploadFile",method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String handleFileUpload(@RequestPart(value = "file") MultipartFile file) {
         return uploadService.handleFileUpload(file);
     }

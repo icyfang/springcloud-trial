@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Hodur
- * @date 2021-04-25
+ * @date 2021/04/25
  */
 @RestController
 public class CollapseController {
@@ -26,10 +26,10 @@ public class CollapseController {
     @GetMapping("/hystrix/collapse/{idList}")
     public List<String> collapse(@PathVariable List<Integer> idList) {
         List<Future<String>> r = new ArrayList<>();
-        for(Integer i: idList){
+        for (Integer i : idList) {
             r.add(collapseRemote.god(i));
         }
-        return r.stream().map(i-> {
+        return r.stream().map(i -> {
             try {
                 return i.get(1, TimeUnit.SECONDS);
             } catch (InterruptedException | ExecutionException | TimeoutException e) {

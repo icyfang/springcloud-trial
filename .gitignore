@@ -24,4 +24,7 @@ hs_err_pid*
 
 /.idea
 *.iml
-/gateway/target/classes/
+/*/target/
+/*/mvnw
+/*/mvnw.cmd
+/*/.mvn/

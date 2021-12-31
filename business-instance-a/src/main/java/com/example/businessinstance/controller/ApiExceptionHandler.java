@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author Hodur
- * @date 2021-04-21
+ * @date 2021/04/21
  */
 @Slf4j
 @ControllerAdvice
@@ -22,13 +22,11 @@ public class ApiExceptionHandler {
     @ResponseBody
     public ResponseEntity<ErrorResponse> handleApiException(ApiException e) {
         log.error("", e);
-        log.error("【Global-Exception-Intercept】ApiException: code: {}, msg: {}", e.getStatus(), e.getErrorCode());
+        log.error("[Global-Exception-Intercept] ApiException: code: {}, msg: {}", e.getStatus(), e.getErrorCode());
         return new ResponseEntity<>(new ErrorResponse(e.getStatus(), e.getErrorCode()), e.getStatus());
     }
 
     /**
-     * @author Hodur
-     * @date 2021-03-23
      */
     @Data
     @AllArgsConstructor
