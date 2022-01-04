@@ -10,7 +10,7 @@
     <artifactId>feign-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>feign-consumer</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project for Spring Cloud</description>
 
     <properties>
         <version.swagger>2.9.2</version.swagger>

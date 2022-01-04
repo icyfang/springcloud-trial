@@ -10,7 +10,7 @@
     <artifactId>ribbon-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ribbon-consumer</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project for Spring Cloud</description>
 
     <dependencies>
         <dependency>
