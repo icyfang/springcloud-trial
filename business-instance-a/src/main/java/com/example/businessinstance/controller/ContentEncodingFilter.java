@@ -30,9 +30,9 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,@NonNull HttpServletResponse response,
                                     @NonNull FilterChain chain) throws ServletException, IOException {
 
-        String conentEncoding = request.getHeader("Content-Encoding");
-        log.trace("Content-Encoding: {}", conentEncoding);
-        if (("gzip".equalsIgnoreCase(conentEncoding) || "deflate".equalsIgnoreCase(conentEncoding))) {
+        String contentEncoding = request.getHeader("Content-Encoding");
+        log.trace("Content-Encoding: {}", contentEncoding);
+        if (("gzip".equalsIgnoreCase(contentEncoding) || "deflate".equalsIgnoreCase(contentEncoding))) {
             chain.doFilter(new GzipRequestWrapper(request), response);
             return;
         }
@@ -131,5 +131,3 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
         }
     }
 }
-
-

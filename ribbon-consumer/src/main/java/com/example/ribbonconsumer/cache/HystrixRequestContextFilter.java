@@ -1,10 +1,5 @@
 package com.example.ribbonconsumer.cache;
 
-/**
- * @author Hodur
- * @date 2021-04-25
- */
-
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +11,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
+/**
+ * @author Hodur
+ * @date 2021/04/25
+ */
 @Component
 @WebFilter(urlPatterns = "/*", asyncSupported = true)
 public class HystrixRequestContextFilter implements Filter {
