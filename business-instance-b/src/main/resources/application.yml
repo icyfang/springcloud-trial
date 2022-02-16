@@ -5,9 +5,12 @@ eureka:
     service-url:
       defaultZone: http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8080/eureka/,http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8081/eureka/
   instance:
-    appname: business-service-b
+    appname: business-service
+    instanceId: business-service-b
     hostname: localhost
     virtual-host-name: business-service
+    # dispaly ip or host name
+    prefer-ip-address: true
   server:
     security:
       name: admin
@@ -20,3 +23,8 @@ server:
 spring:
   application:
     name: business-service
+info:
+  app.name: ${eureka.instance.appname}
+  company.name: www.atguigu.com
+  build.artifactId: com.atguigu.springcloud
+  build.version:  @project.version@
