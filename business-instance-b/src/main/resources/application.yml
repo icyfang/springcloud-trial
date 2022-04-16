@@ -4,11 +4,12 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8080/eureka/,http://${eureka.server.security.name}:${eureka.server.security.password}@localhost:8081/eureka/
+    healthcheck:
+      enabled: true
   instance:
-    appname: business-service
-    instanceId: business-service-b
+    appname: ${spring.application.name}
     hostname: localhost
-    virtual-host-name: business-service
+    virtual-host-name: ${spring.application.name}
     # dispaly ip or host name
     prefer-ip-address: true
   server:
@@ -20,6 +21,8 @@ server:
   compression:
     enabled: true
     min-response-size: 1024
+  servlet:
+    context-path: /example
 spring:
   application:
     name: business-service

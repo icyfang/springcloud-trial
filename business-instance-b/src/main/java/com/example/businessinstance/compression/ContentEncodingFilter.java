@@ -1,4 +1,4 @@
-package com.example.businessinstance.controller;
+package com.example.businessinstance.compression;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;

@@ -1,4 +1,4 @@
-package com.example.businessinstance.controller;
+package com.example.businessinstance.compression;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
@@ -30,9 +30,9 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,@NonNull HttpServletResponse response,
                                     @NonNull FilterChain chain) throws ServletException, IOException {
 
-        String contentEncoding = request.getHeader("Content-Encoding");
-        log.trace("Content-Encoding: {}", contentEncoding);
-        if (("gzip".equalsIgnoreCase(contentEncoding) || "deflate".equalsIgnoreCase(contentEncoding))) {
+        String conentEncoding = request.getHeader("Content-Encoding");
+        log.trace("Content-Encoding: {}", conentEncoding);
+        if (("gzip".equalsIgnoreCase(conentEncoding) || "deflate".equalsIgnoreCase(conentEncoding))) {
             chain.doFilter(new GzipRequestWrapper(request), response);
             return;
         }
@@ -131,3 +131,4 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
         }
     }
 }
+
