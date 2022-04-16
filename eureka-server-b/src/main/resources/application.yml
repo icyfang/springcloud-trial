@@ -4,9 +4,14 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8080/eureka/
+  server:
+    enableSelfPreservation: false
   instance:
     appname: eureka-server
     hostname: localhost
+    healthCheckUrlPath: example/health
+    statusPageUrlPath: example/info
+    prefer-ip-address: true
 server:
   port: 8081
 spring:
