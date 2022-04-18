@@ -12,10 +12,6 @@
     <name>business-instance-b</name>
     <description>Demo project for Spring Cloud</description>
 
-    <properties>
-        <version.swagger>2.9.2</version.swagger>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -33,23 +29,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${version.swagger}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${version.swagger}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${version.swagger}</version>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>

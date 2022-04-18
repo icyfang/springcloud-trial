@@ -18,6 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+        <version.swagger>2.9.2</version.swagger>
     </properties>
 
     <modules>
@@ -60,7 +61,21 @@
             <artifactId>log4j-to-slf4j</artifactId>
             <version>2.17.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${version.swagger}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${version.swagger}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-bean-validators</artifactId>
+            <version>${version.swagger}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

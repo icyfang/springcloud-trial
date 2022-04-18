@@ -10,11 +10,7 @@
     <artifactId>feign-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>feign-consumer</name>
-    <description>Demo project for Spring Cloud</description>
-
-    <properties>
-        <version.swagger>2.9.2</version.swagger>
-    </properties>
+    <description>Demo project for Spring Boot</description>
 
     <dependencies>
         <dependency>
@@ -32,22 +28,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${version.swagger}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${version.swagger}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${version.swagger}</version>
         </dependency>
 
     </dependencies>
