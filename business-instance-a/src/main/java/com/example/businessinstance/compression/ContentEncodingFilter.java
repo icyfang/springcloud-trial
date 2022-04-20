@@ -30,9 +30,9 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,@NonNull HttpServletResponse response,
                                     @NonNull FilterChain chain) throws ServletException, IOException {
 
-        String conentEncoding = request.getHeader("Content-Encoding");
-        log.trace("Content-Encoding: {}", conentEncoding);
-        if (("gzip".equalsIgnoreCase(conentEncoding) || "deflate".equalsIgnoreCase(conentEncoding))) {
+        String contentEncoding = request.getHeader("Content-Encoding");
+        log.trace("Content-Encoding: {}", contentEncoding);
+        if (("gzip".equalsIgnoreCase(contentEncoding) || "deflate".equalsIgnoreCase(contentEncoding))) {
             chain.doFilter(new GzipRequestWrapper(request), response);
             return;
         }
@@ -54,13 +54,13 @@ public class ContentEncodingFilter extends OncePerRequestFilter {
         public ServletInputStream getInputStream() throws IOException {
             ServletInputStream sis = request.getInputStream();
             InputStream is;
-            String conentEncoding = request.getHeader("Content-Encoding");
-            if ("gzip".equalsIgnoreCase(conentEncoding)) {
+            String contentEncoding = request.getHeader("Content-Encoding");
+            if ("gzip".equalsIgnoreCase(contentEncoding)) {
                 is = new GZIPInputStream(sis);
-            } else if ("deflate".equalsIgnoreCase(conentEncoding)) {
+            } else if ("deflate".equalsIgnoreCase(contentEncoding)) {
                 is = new DeflaterInputStream(sis);
             } else {
-                throw new UnsupportedEncodingException(conentEncoding + " is not supported.");
+                throw new UnsupportedEncodingException(contentEncoding + " is not supported.");
             }
             final InputStream compressInputStream = is;
             return new ServletInputStream() {
