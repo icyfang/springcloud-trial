@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @FeignClient(name = "business-service"
         , contextId = "cache"
+        , path = "/example"
 )
 public interface CacheRemote {
 

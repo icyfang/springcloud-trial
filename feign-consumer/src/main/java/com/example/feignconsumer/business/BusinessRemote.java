@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @SuppressWarnings("SameReturnValue")
 @FeignClient(name = "business-service"
         , contextId = "business"
+        ,path = "/example"
         , configuration = FeignConfig.class
         , fallback = BusinessRemote.BusinessFallback.class
 )

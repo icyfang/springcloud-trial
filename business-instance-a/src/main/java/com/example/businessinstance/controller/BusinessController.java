@@ -50,7 +50,6 @@ public class BusinessController {
         return instanceName;
     }
 
-    // todo HystrixBadRequestException
     @GetMapping(value = "/exception")
     String exception() {
         throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "e110011");

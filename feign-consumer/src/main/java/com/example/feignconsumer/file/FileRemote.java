@@ -9,6 +9,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  */
 @FeignClient(name = "business-service"
         , contextId = "file"
+        , path = "/example"
         , configuration = FeignConfig.class
 )
 public interface FileRemote extends FileApi {

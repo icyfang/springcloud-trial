@@ -1,6 +1,5 @@
 package com.example.businessinstance.controller;
 
-import com.netflix.hystrix.exception.HystrixBadRequestException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,8 +52,7 @@ public class BusinessController {
 
     @GetMapping(value = "/exception")
     String exception() {
-        throw new HystrixBadRequestException("", new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "e110011"));
-//        throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "e110011");
+        throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "e110011");
     }
 
 }

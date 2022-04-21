@@ -1,11 +1,7 @@
 package com.example.feignconsumer.business;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Logger;
-import feign.Response;
 import feign.Retryer;
-import feign.codec.ErrorDecoder;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,34 +34,5 @@ public class FeignConfig {
 //        };
 //    }
 
-    @Bean
-    public ErrorDecoder errorDecoder() {
-        return new ErrorDecoder() {
 
-            final org.slf4j.Logger log = LoggerFactory.getLogger(ErrorDecoder.class);
-
-//        @Override
-//        public Exception decode(String methodKey, Response response) {
-//            ObjectMapper mapper = new ObjectMapper();
-//            ApiException resEntity = null;
-//            try {
-//                resEntity = mapper.readValue(Util.toString(response.body().asReader(StandardCharsets.UTF_8)),
-//                ApiException.class);
-//            } catch (IOException ex) {
-//                log.error(ex.getMessage(), ex);
-//            }
-//            return resEntity;
-//        }
-
-            @Override
-            public Exception decode(String methodKey, Response response) {
-
-                String s = response.body().toString();
-                ApiExceptionHandler.ErrorResponse r = new ObjectMapper()
-                        .convertValue(s, ApiExceptionHandler.ErrorResponse.class);
-                log.error("call {} failed, status: {}, errorCode: {}", methodKey, r.status, r.errorCode);
-                return new ApiException(r.status, r.errorCode);
-            }
-        };
-    }
 }

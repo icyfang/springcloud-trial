@@ -16,9 +16,6 @@ public class BusinessController {
     @Autowired
     private BusinessRemote remote;
 
-    @Autowired
-    private DecoderRemote decoderRemote;
-
     @GetMapping(value = "/business/instanceName")
     public String getInstanceName() {
         return remote.instanceName();
@@ -27,11 +24,6 @@ public class BusinessController {
     @GetMapping(value = "/business/async")
     public String getAsync() throws ExecutionException, InterruptedException {
         return remote.asyncName().queue().get();
-    }
-
-    @GetMapping("/business/decodeException")
-    public String decodeException() {
-        return decoderRemote.fallback();
     }
 
     // todo
