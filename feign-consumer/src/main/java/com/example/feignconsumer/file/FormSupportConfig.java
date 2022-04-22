@@ -15,5 +15,4 @@ public class FormSupportConfig {
     public Encoder feignFormEncoder(ObjectFactory<HttpMessageConverters> converters) {
         return new SpringFormEncoder(new SpringEncoder(converters));
     }
-
 }

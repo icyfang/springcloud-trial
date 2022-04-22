@@ -13,6 +13,9 @@ eureka:
       password: 123456
 server:
   port: 8090
+  compression:
+    enabled: true
+    min-response-size: 1024
 spring:
   application:
     name: feign-consumer
@@ -32,6 +35,16 @@ feign:
       minRequestSize: 1024
     response:
       enabled: true #\u5F00\u542F\u54CD\u5E94\u7684\u538B\u7F29
+  metrics:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 hystrix:
   command:
     default:

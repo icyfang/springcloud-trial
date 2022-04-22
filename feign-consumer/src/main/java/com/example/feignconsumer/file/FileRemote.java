@@ -4,6 +4,8 @@ import com.example.feignconsumer.business.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
+ * Feign Inheritance Support
+ *
  * @author Hodur
  * @date 2021/04/23
  */
