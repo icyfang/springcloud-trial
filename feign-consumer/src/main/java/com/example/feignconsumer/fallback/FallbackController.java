@@ -17,6 +17,8 @@ public class FallbackController {
     @Autowired
     private FallbackRemote fallback;
 
+    @Autowired
+    private FallbackService fallbackService;
 
     @GetMapping("/fallback")
     public String fallback() {
@@ -36,5 +38,10 @@ public class FallbackController {
     @GetMapping("/fallbackFactory/exception")
     public String fallbackFactoryException() {
         return fallbackFactory.exception();
+    }
+
+    @GetMapping("/fallback/ignore")
+    public String fallbackIgnore() {
+        return fallbackService.fallback();
     }
 }
