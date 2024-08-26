@@ -18,7 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
-        <version.swagger>2.9.2</version.swagger>
+        <version.swagger>2.10.0</version.swagger>
     </properties>
 
     <modules>
